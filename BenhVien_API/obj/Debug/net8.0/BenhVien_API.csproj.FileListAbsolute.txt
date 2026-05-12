@@ -140,3 +140,4 @@ D:\hk6\LTDD\DoAn_Backend\BenhVien_API\BenhVien_API\obj\Debug\net8.0\refint\BenhV
 D:\hk6\LTDD\DoAn_Backend\BenhVien_API\BenhVien_API\obj\Debug\net8.0\BenhVien_API.pdb
 D:\hk6\LTDD\DoAn_Backend\BenhVien_API\BenhVien_API\obj\Debug\net8.0\BenhVien_API.genruntimeconfig.cache
 D:\hk6\LTDD\DoAn_Backend\BenhVien_API\BenhVien_API\obj\Debug\net8.0\ref\BenhVien_API.dll
+D:\hk6\LTDD\DoAn_Backend\BenhVien_API\BenhVien_API\obj\Debug\net8.0\BenhVien_API.sourcelink.json

@@ -15,6 +15,10 @@
       "RelativeMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|solutionrelative:benhvien_api\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|d:\\hk6\\ltdd\\doan_backend\\benhvien_api\\benhvien_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|solutionrelative:benhvien_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|d:\\hk6\\ltdd\\doan_backend\\benhvien_api\\benhvien_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|solutionrelative:benhvien_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|d:\\hk6\\ltdd\\doan_backend\\benhvien_api\\benhvien_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|solutionrelative:benhvien_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|d:\\hk6\\ltdd\\doan_backend\\benhvien_api\\benhvien_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|solutionrelative:benhvien_api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{17C19A82-4604-40FA-9F81-F3E789413527}|BenhVien_API\\BenhVien_API.csproj|d:\\hk6\\ltdd\\doan_backend\\benhvien_api\\benhvien_api\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -118,7 +118,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -130,15 +130,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\Models\\User.cs",
               "RelativeDocumentMoniker": "BenhVien_API\\Models\\User.cs",
               "ToolTip": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\Models\\User.cs",
               "RelativeToolTip": "BenhVien_API\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T07:54:30.004Z"
+              "WhenOpened": "2026-05-12T07:54:30.004Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -160,13 +161,14 @@
               "RelativeDocumentMoniker": "BenhVien_API\\AuthController.cs",
               "ToolTip": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\AuthController.cs",
               "RelativeToolTip": "BenhVien_API\\AuthController.cs",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAkwP4AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAwJIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T07:49:37.763Z"
+              "WhenOpened": "2026-05-12T07:49:37.763Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "BenhVien_API\\Controllers\\UserController.cs",
@@ -364,7 +366,7 @@
               "RelativeDocumentMoniker": "BenhVien_API\\Program.cs",
               "ToolTip": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\Program.cs",
               "RelativeToolTip": "BenhVien_API\\Program.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAwwEsAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T07:36:11.696Z",
               "EditorCaption": ""
@@ -377,14 +379,14 @@
               "RelativeDocumentMoniker": "BenhVien_API\\Properties\\launchSettings.json",
               "ToolTip": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\Properties\\launchSettings.json",
               "RelativeToolTip": "BenhVien_API\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-05-12T07:36:05.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\hk6\\LTDD\\DoAn_Backend\\BenhVien_API\\BenhVien_API\\appsettings.json",
               "RelativeDocumentMoniker": "BenhVien_API\\appsettings.json",
