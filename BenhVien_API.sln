@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenhVien_API", "BenhVien_API\BenhVien_API.csproj", "{17C19A82-4604-40FA-9F81-F3E789413527}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17C19A82-4604-40FA-9F81-F3E789413527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C19A82-4604-40FA-9F81-F3E789413527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C19A82-4604-40FA-9F81-F3E789413527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C19A82-4604-40FA-9F81-F3E789413527}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D3BDE63-78F5-446F-BB2F-6D1977B7870A}
+	EndGlobalSection
+EndGlobal
