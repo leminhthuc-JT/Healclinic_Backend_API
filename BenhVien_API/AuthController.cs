@@ -104,7 +104,7 @@ namespace BenhVien_API.Controllers
 
             var user = new User
             {
-                Phone = model.Phone,
+                Phone = model.Phone.Trim(),
                 PassWord = BCrypt.Net.BCrypt.HashPassword(model.Password),
                 Role = roleCode,
                 CreatedAt = DateTime.UtcNow
@@ -118,7 +118,7 @@ namespace BenhVien_API.Controllers
                 var patient = new Patient
                 {
                     FullName = model.FullName,
-                    Phone = model.Phone,
+                    Phone = model.Phone.Trim(),
                     UserId = user.UserId
                 };
                 _context.Patients.Add(patient);
@@ -156,7 +156,9 @@ namespace BenhVien_API.Controllers
             var user = await _context.Users
                 .Include(x => x.Patients)
                 .Include(x => x.Doctors)
-                .FirstOrDefaultAsync(x => x.Phone == model.Phone);
+                .FirstOrDefaultAsync(
+                    x => x.Phone.Trim() == model.Phone.Trim()
+                    );
 
             if (user == null)
             {

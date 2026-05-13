@@ -23,6 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
+
 // DB
 builder.Services.AddDbContext<QlBenhvienContext>(options =>
     options.UseSqlServer(
