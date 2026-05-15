@@ -61,10 +61,19 @@ namespace ConnectionStringAPI.Controllers
 
         // Get a conversation between two participants (both directions)
         [HttpGet("conversation")]
-        public async Task<IActionResult> GetConversation(string userA, string userB, int pageNumber = 1, int pageSize = 50)
+        public async Task<IActionResult> GetConversation(
+        int userA,
+        int userB,
+        int pageNumber = 1,
+        int pageSize = 50)
         {
-            if (string.IsNullOrEmpty(userA) || string.IsNullOrEmpty(userB))
-                return BadRequest(new { message = "Both participant ids are required." });
+            if (userA <= 0 || userB <= 0)
+            {
+                return BadRequest(new
+                {
+                    message = "Both participant ids are required."
+                });
+            }
 
             var query = _con.Messagedetails
                 .Where(m =>
@@ -82,9 +91,18 @@ namespace ConnectionStringAPI.Controllers
 
         // Get messages involving a user (inbox-like), newest first
         [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetMessagesForUser(string userId, int pageNumber = 1, int pageSize = 50)
+        public async Task<IActionResult> GetMessagesForUser(
+        int userId,
+        int pageNumber = 1,
+        int pageSize = 50)
         {
-            if (string.IsNullOrEmpty(userId)) return BadRequest();
+            if (userId <= 0)
+            {
+                return BadRequest(new
+                {
+                    message = "Invalid user id."
+                });
+            }
 
             var messages = await _con.Messagedetails
                 .Where(m => m.SenderId == userId || m.ReceiverId == userId)

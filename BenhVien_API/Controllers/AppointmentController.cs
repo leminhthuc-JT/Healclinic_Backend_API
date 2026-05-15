@@ -56,8 +56,10 @@ namespace ConnectionStringAPI.Controllers
                 new SqlParameter("@PatientId", appointment.PatientId),
                 new SqlParameter("@DoctorId", (object?)appointment.DoctorId ?? DBNull.Value),
                 new SqlParameter("@AppointmentDate", appointment.AppointmentDate),
+                new SqlParameter("@TimeExpected", (object?)appointment.TimeExpected ?? DBNull.Value),
                 new SqlParameter("@SpecialtyId", (object?)appointment.SpecialtyId ?? DBNull.Value),
                 new SqlParameter("@Note", (object?)appointment.Note ?? DBNull.Value),
+                new SqlParameter("@IsCover", (object?)appointment.IsCover ?? DBNull.Value),
                 new SqlParameter("@Price", (object?)appointment.Price ?? DBNull.Value)
             );
 
@@ -76,6 +78,7 @@ namespace ConnectionStringAPI.Controllers
             existingApp.PatientId = app.PatientId;
             existingApp.DoctorId = app.DoctorId;
             existingApp.AppointmentDate = app.AppointmentDate;
+            existingApp.TimeExpected = app.TimeExpected;
             existingApp.SpecialtyId = app.SpecialtyId;
             existingApp.QueueNumber = app.QueueNumber;
             existingApp.Status = app.Status;

@@ -617,12 +617,12 @@
     "Parameters": [
       {
         "Name": "userA",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
         "Name": "userB",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -648,7 +648,7 @@
     "Parameters": [
       {
         "Name": "userId",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": true
       },
       {

@@ -15,6 +15,8 @@ public partial class Appointment
 
     public string SpecialtyId { get; set; } = null!;
 
+    public string? TimeExpected { get; set; }
+
     public int? QueueNumber { get; set; }
 
     public string? Status { get; set; }

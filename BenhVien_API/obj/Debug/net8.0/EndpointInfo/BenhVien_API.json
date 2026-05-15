@@ -974,14 +974,16 @@
             "name": "userA",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           },
           {
             "name": "userB",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           },
           {
@@ -1021,7 +1023,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           },
           {
@@ -2767,6 +2770,10 @@
             "type": "string",
             "nullable": true
           },
+          "timeExpected": {
+            "type": "string",
+            "nullable": true
+          },
           "queueNumber": {
             "type": "integer",
             "format": "int32",
@@ -3088,11 +3095,13 @@
             "nullable": true
           },
           "senderId": {
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "receiverId": {
-            "type": "string",
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "messageText": {

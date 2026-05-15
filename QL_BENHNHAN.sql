@@ -17,8 +17,8 @@ CREATE TABLE dbo.USERS
 (
 	userId INT IDENTITY,
 	email VARCHAR(200),
-	passWord CHAR(200) NOT NULL,
-	phone CHAR(20) UNIQUE,
+	passWord VARCHAR(200) NOT NULL,
+	phone VARCHAR(20) UNIQUE,
 	role NVARCHAR(20) CHECK (role = N'P' OR role = N'D' OR role = N'M') DEFAULT N'P',
 	createdAt DATETIME DEFAULT GETDATE(),
 	updateAt DATETIME CHECK (updateAt <= GETDATE()),
@@ -34,7 +34,7 @@ CREATE TABLE dbo.PATIENTS
 	gender NVARCHAR(10) CHECK (GENDER = N'Nam' OR GENDER = N'Nữ'),
 	dateOfBirth DATE CHECK (DATEOFBIRTH < GETDATE()),
 	address NVARCHAR(200),
-	phone CHAR(20) UNIQUE,
+	phone VARCHAR(20) UNIQUE,
 	bloodType CHAR(5) CHECK (	bloodType = 'A+' OR 
 								bloodType = 'A-' OR 
 								bloodType = 'B+' OR
@@ -93,6 +93,7 @@ CREATE TABLE dbo.APPOINTMENTS --đặt lịch khám
 	doctorId INT NOT NULL,
 	appointmentDate DATETIME CHECK (appointmentDate >= GETDATE()) NOT NULL,
 	specialtyId CHAR(50) NOT NULL, --kHOA KHÁM BỆNH
+	timeExpected VARCHAR(30), -- thời gian khám dự kiến
 	queueNumber INT, --set lại số thứ tự theo từng ngày
 	status NVARCHAR(50) CHECK (	status = N'Chờ khám' OR
 								status = N'Đã khám' OR
@@ -144,9 +145,9 @@ CREATE TABLE dbo.MESSAGEDETAIL
 (
 	chatId INT NOT NULL,
 	messageId INT IDENTITY,
-	imageUrl CHAR(500) DEFAULT ('default_image.png'),
-	senderId CHAR(50),
-	receiverId CHAR(50),
+	imageUrl VARCHAR(500) DEFAULT ('default_image.png'),
+	senderId INT,
+	receiverId INT,
 	messageText NVARCHAR(2000),
 	createdAt DATETIME DEFAULT GETDATE(),
 	CONSTRAINT pk_mess PRIMARY KEY (chatId, messageId),
@@ -404,11 +405,14 @@ GO
 	----------------------
 	--1. PROCEDURE TÍNH TOÁN SỐ THỨ TỰ KHÁM + XỬ LÝ ĐỒNG THỜI CHỈ NHẬN 1 LÚC 1 LỊCH ĐẶT
 
+
 CREATE PROCEDURE sp_CreateAppointment
     @patientId INT,
     @doctorId INT,
 	@specialty CHAR(50),
     @appointmentDate DATETIME,
+	@time VARCHAR(30),
+	@cover BIT,
     @note NVARCHAR(200),
     @price DECIMAL(12,2)
 AS
@@ -426,9 +430,11 @@ BEGIN
         doctorId,
 		specialtyId,
         appointmentDate,
+		timeExpected,
         queueNumber,
         status,
         note,
+		isCover,
         price
     )
     VALUES (
@@ -436,9 +442,11 @@ BEGIN
         @doctorId,
 		@specialty,
         @appointmentDate,
+		@time,
         @max + 1,
         N'Chờ xác nhận',
         @note,
+		@cover,
         @price
     );
 
@@ -468,12 +476,12 @@ VALUES
 -- =========================
 INSERT INTO dbo.USERS (email, passWord, phone, role)
 VALUES
-('dalieu.thuclm@gmail.com', '123456', '0901000001', N'D'),
-('dalieu.namnb@gmail.com', '123456', '0901000002', N'D'),
-('dalieu.chungpc@gmail.com', '123456', '0901000003', N'D'),
-('patient1@gmail.com', '123456', '0909000001', N'P'),
-('p2@gmail.com', '123456', '0909000002', N'P'),
-('p3@gmail.com', '123456', '0909000003', N'P');
+('dalieu.thuclm@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0901000001', N'D'),
+('dalieu.namnb@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0901000002', N'D'),
+('dalieu.chungpc@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0901000003', N'D'),
+('patient1@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0909000001', N'P'),
+('p2@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0909000002', N'P'),
+('p3@gmail.com', '$2a$11$7S02U0G0cDTE.rkY1qEgju4mJNkkqGfPvi5P.GPNEA9/ds2fdN.HW', '0909000003', N'P');
 
 -- =========================
 -- DOCTORS
@@ -513,9 +521,9 @@ VALUES
 -- =========================
 DECLARE @day DATETIME = DATEADD(DAY, 1, GETDATE());
 
-EXEC sp_CreateAppointment 1, 1, 'SP001', @day, N'Khám da tổng quát', 150000;
-EXEC sp_CreateAppointment 2, 1, 'SP001', @day, N'Tái khám da', 150000;
-EXEC sp_CreateAppointment 3, 2, 'SP002', @day, N'Khám nám da', 300000;
+EXEC sp_CreateAppointment 1, 1, 'SP001', @day, '7:30 - 8:30',0 ,N'Khám da tổng quát', 150000;
+EXEC sp_CreateAppointment 2, 1, 'SP001', @day, '7:30 - 8:30',0 ,N'Tái khám da', 150000;
+EXEC sp_CreateAppointment 3, 2, 'SP002', @day, '7:30 - 8:30',0 ,N'Khám nám da', 300000;
 
 -- =========================
 -- MEDICAL_RECORDS
