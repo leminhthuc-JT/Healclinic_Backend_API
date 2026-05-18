@@ -1,14 +1,16 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
+﻿using BCrypt.Net;
+using BenhVien_API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using BCrypt.Net;
-using BenhVien_API.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BenhVien_API.Controllers
 {
@@ -101,6 +103,16 @@ namespace BenhVien_API.Controllers
             }
 
             string roleCode = (model.Role ?? "P").ToUpperInvariant();
+            string passwordPattern = @"^(?=.*[A-Z])(?=.*[\W_]).{8,}$";
+
+            if (!Regex.IsMatch(model.Password, passwordPattern))
+            {
+                return BadRequest(new
+                {
+                    message =
+                    "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ in hoa và 1 ký tự đặc biệt"
+                });
+            }
 
             var user = new User
             {
@@ -230,6 +242,59 @@ namespace BenhVien_API.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        //Change passwword
+        [Authorize]
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword(
+            [FromBody] ChangePasswordModel model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+
+            string passwordPattern = @"^(?=.*[A-Z])(?=.*[\W_]).{8,}$";
+
+            if (!Regex.IsMatch(model.NewPassword, passwordPattern))
+            {
+                return BadRequest(new
+                {
+                    message =
+                    "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ in hoa và 1 ký tự đặc biệt"
+                });
+            }
+
+            var user = await _context.Users.FindAsync(int.Parse(userId));
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            bool checkPassword = BCrypt.Net.BCrypt.Verify(model.CurrentPassword, user.PassWord);
+
+            if (!checkPassword)
+            {
+                return BadRequest(new
+                {
+                    message = "Mật khẩu hiện tại không đúng"
+                });
+            }
+
+            user.PassWord = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Đổi mật khẩu thành công"
+            });
+        }
+
+
     }
 
     // Models / DTOs (moved inside namespace)
@@ -256,5 +321,11 @@ namespace BenhVien_API.Controllers
     {
         public string Phone { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+    }
+    public class ChangePasswordModel
+    {
+        public string CurrentPassword { get; set; } = string.Empty;
+
+        public string NewPassword { get; set; } = string.Empty;
     }
 }
